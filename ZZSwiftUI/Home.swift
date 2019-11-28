@@ -11,14 +11,25 @@ import SwiftUI
 struct Home: View {
     
     @State var showMenu = false
+    @State var showProfile = false
     
     var body: some View {
         
         ZStack {
             
-            Button("Open Menu") {
-                self.showMenu.toggle()
-            }
+            ContentView()
+                .background(Color.white)
+                .cornerRadius(30)
+                .shadow(radius: 20)
+                    .animation(.spring())
+                .offset(y:showProfile ? 0 : UIScreen.main.bounds.height)
+
+            MenuButton(show: $showMenu)
+                .offset(x: -30,y: showProfile ? 0 : 88)
+                .animation(.interactiveSpring())
+            MenuRight(showMenu: $showProfile)
+                .offset(x: -16, y: showProfile ? 0 : 88)
+                .animation(.interactiveSpring())
             MenuView(show: $showMenu)
             
             
@@ -72,6 +83,75 @@ struct MenuView:View {
             .onTapGesture {
                 self.show.toggle()
             }
+    }
+    
+}
+
+struct CircleButton:View {
+    var icon = "person.crop.circle"
+    
+    
+    var body: some View {
+        HStack{
+            Image(systemName: icon)
+                .foregroundColor(.black)
+        }
+        .frame(width:44,height: 44)
+        .background(Color.white)
+        .cornerRadius(22)
+        .shadow(radius: 10)
+    }
+    
+}
+
+struct MenuButton:View {
+    
+    @Binding var show:Bool
+    
+    var body: some View {
+        
+        VStack {
+            HStack {
+                Button(action: { self.show.toggle()}) {
+                    HStack{
+                        Spacer()
+                        Image(systemName: "list.dash")
+                            .foregroundColor(.black)
+                    }
+                    .padding(.trailing,10)
+                    .frame(width:90,height: 60)
+                    .background(Color.white)
+                    .cornerRadius(30)
+                    .shadow(radius: 10)
+                }
+                Spacer()
+            }
+            Spacer()
+        }
+        
+    }
+    
+}
+
+struct MenuRight:View {
+    
+    @Binding var showMenu:Bool
+    
+    var body:some View {
+        VStack {
+            HStack {
+                Spacer()
+                Button(action: {self.showMenu.toggle()}) {
+                    CircleButton(icon: "person.crop.circle")
+                }
+                Button(action: {
+                    self.showMenu.toggle()
+                }) {
+                    CircleButton(icon: "bell")
+                }
+            }
+            Spacer()
+        }
     }
     
 }
