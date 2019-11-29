@@ -14,24 +14,21 @@ struct HomeList: View {
     
     var body: some View {
         ZStack(alignment: .topLeading) {
-        VStack {
-            
-            HStack {
-                VStack(alignment: .leading) {
-                    Text("Courses")
-                        .font(.largeTitle)
-                        .fontWeight(.heavy)
-                    Text("22 courses")
-                        .foregroundColor(.gray)
+            VStack {
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("Courses")
+                            .font(.largeTitle)
+                            .fontWeight(.heavy)
+                        Text("22 courses")
+                            .foregroundColor(.gray)
+                    }
+                    Spacer()
                 }
-                Spacer()
-            }
-            .padding(.leading, 70.0)
-            .padding(.bottom, 40.0)
-            
-            
-            
-            ScrollView(.horizontal,showsIndicators: false) {
+                    .padding(.leading, 70.0)
+                    .padding(.bottom, 40.0)
+                
+                ScrollView(.horizontal,showsIndicators: false) {
                     HStack(spacing: 40) {
                         ForEach (courseData){ item in
                             Button(action: {
@@ -48,20 +45,20 @@ struct HomeList: View {
                     }
                     .padding([.leading,.bottom,.trailing],40)
                 }
+                
+            }
+                .padding(.top,80)
+            
+            ContentView()
+                .cornerRadius(30)
+                .shadow(radius: 20)
+                .offset(y: showDetail ? 0 : UIScreen.main.bounds.height)
+                .animation(.default)
+                .onTapGesture {
+                    self.showDetail = false
+                }
             
         }
-            .padding(.top,80)
-        
-        ContentView()
-            .cornerRadius(30)
-            .shadow(radius: 20)
-            .offset(y: showDetail ? 0 : UIScreen.main.bounds.height)
-            .animation(.default)
-            .onTapGesture {
-                self.showDetail = false
-        }
-
-    }
     }
 }
 
@@ -94,7 +91,6 @@ struct CourseView:View {
                 .aspectRatio(contentMode: .fill)
         }
             .padding(30)
-            
             .frame(width: 250, height: 360)
             .background(color)
             .cornerRadius(30)
