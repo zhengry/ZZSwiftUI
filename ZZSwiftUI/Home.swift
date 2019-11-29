@@ -17,21 +17,23 @@ struct Home: View {
         
         ZStack {
             
+            HomeList()
+                .blur(radius: showMenu ? 20 : 0)
+                .scaleEffect(showProfile ? 0.95 : 1)
+                .animation(.default)
             ContentView()
-                .background(Color.white)
                 .cornerRadius(30)
                 .shadow(radius: 20)
-                    .animation(.spring())
+                .animation(.spring())
                 .offset(y:showProfile ? 0 : UIScreen.main.bounds.height)
 
             MenuButton(show: $showMenu)
-                .offset(x: -30,y: showProfile ? 0 : 88)
+                .offset(x: -40,y: showProfile ? 0 : 88)
                 .animation(.interactiveSpring())
             MenuRight(showMenu: $showProfile)
                 .offset(x: -16, y: showProfile ? 0 : 88)
                 .animation(.interactiveSpring())
             MenuView(show: $showMenu)
-            
             
         }
     }
