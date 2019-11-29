@@ -9,34 +9,24 @@
 import SwiftUI
 
 struct UpdateList: View {
+    
+    @ObservedObject var store = UpdateStore(updates:updateItems)
+    
+    func addUpdateIem() {
+        store.updates.append(UpdateItem(title: "React Native学习之路", icon: "circle", content: "React Native 大前端学习路线了解一下", date: "2019-11-29", color: .accentColor))
+    }
+    
     var body: some View {
-        
         NavigationView {
-            List(updateItems){ item in
+            List(store.updates){ item in
                 NavigationLink(destination: UpdateDetail(title: item.title, image: item.icon, content: item.content, color: item.color)) {
-                    HStack(spacing:12) {
-                        Image(systemName: item.icon)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .padding()
-                            .frame(width: 100, height: 100)
-                            .background(Color.primary)
-                            .cornerRadius(20)
-                            .foregroundColor(item.color)
-                            
-                            
-                        VStack(alignment: .leading, spacing: 10) {
-                            Text(item.title)
-                                .font(.headline)
-                            Text(item.content)
-                                .lineLimit(2)
-                            Text(item.date)
-                                .foregroundColor(.gray)
-                        }
-                    }
+                    UpdateItemView(icon: item.icon, color: item.color, title: item.title, content: item.content, date: item.date)
                 }            
             }
             .navigationBarTitle(Text("Update List").font(.title).fontWeight(.bold))
+            .navigationBarItems(leading: Button(action: addUpdateIem) {
+                Image(systemName: "plus.circle")
+            })
         }
     }
 }
@@ -44,6 +34,37 @@ struct UpdateList: View {
 struct UpdateList_Previews: PreviewProvider {
     static var previews: some View {
         UpdateList()
+    }
+}
+
+struct UpdateItemView:View {
+    var icon:String = ""
+    var color:Color = .white
+    var title:String = ""
+    var content:String = ""
+    var date:String = ""
+
+    var body: some View {
+        HStack(spacing:12) {
+            Image(systemName: icon)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding()
+                .frame(width: 100, height: 100)
+                .background(Color.primary)
+                .cornerRadius(20)
+                .foregroundColor(color)
+                
+                
+            VStack(alignment: .leading, spacing: 10) {
+                Text(title)
+                    .font(.headline)
+                Text(content)
+                    .lineLimit(2)
+                Text(date)
+                    .foregroundColor(.gray)
+            }
+        }
     }
 }
 
