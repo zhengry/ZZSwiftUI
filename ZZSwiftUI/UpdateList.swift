@@ -12,22 +12,54 @@ struct UpdateList: View {
     
     @ObservedObject var store = UpdateStore(updates:updateItems)
     
-    func addUpdateIem() {
+    func addUpdateItem() {
         store.updates.append(UpdateItem(title: "React Native学习之路", icon: "circle", content: "React Native 大前端学习路线了解一下", date: "2019-11-29", color: .accentColor))
+    }
+    
+    func deleteItem(at index:Int) {
+        store.updates.remove(at: index)
+    }
+    
+    func moveItem(at current:Int, to destination:Int) {
+        store.updates.swapAt(current, destination)
     }
     
     var body: some View {
         NavigationView {
-            List(store.updates){ item in
-                NavigationLink(destination: UpdateDetail(title: item.title, image: item.icon, content: item.content, color: item.color)) {
-                    UpdateItemView(icon: item.icon, color: item.color, title: item.title, content: item.content, date: item.date)
-                }            
+            List{
+                ForEach(store.updates) { item in
+                    NavigationLink(destination:
+                        UpdateDetail(
+                            title: item.title,
+                            image: item.icon,
+                            content: item.content,
+                            color: item.color
+                        )
+                    ) {
+                        UpdateItemView(
+                            icon: item.icon,
+                            color: item.color,
+                            title: item.title,
+                            content: item.content,
+                            date: item.date
+                        )
+                    }
+                }
+                .onDelete { (indexSet) in
+                    self.deleteItem(at: indexSet.first!)
+                }
+                .onMove { (indexSet, index) in
+                    self.moveItem(at: indexSet.first!, to: index)
+                }
+
             }
             .navigationBarTitle(Text("Update List").font(.title).fontWeight(.bold))
-            .navigationBarItems(leading: Button(action: addUpdateIem) {
+            .navigationBarItems(leading: Button(action: addUpdateItem) {
                 Image(systemName: "plus.circle")
-            })
+            }, trailing: EditButton())
+            
         }
+        
     }
 }
 
