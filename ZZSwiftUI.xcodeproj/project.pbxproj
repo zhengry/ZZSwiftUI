@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B1D5F6B23923F2D0020A728 /* ZZTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1D5F6A23923F2D0020A728 /* ZZTabBar.swift */; };
 		5B4543AC238CF8FF00FA6B47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4543AB238CF8FF00FA6B47 /* AppDelegate.swift */; };
 		5B4543AE238CF8FF00FA6B47 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4543AD238CF8FF00FA6B47 /* SceneDelegate.swift */; };
 		5B4543B0238CF8FF00FA6B47 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4543AF238CF8FF00FA6B47 /* ContentView.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B1D5F6A23923F2D0020A728 /* ZZTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZZTabBar.swift; sourceTree = "<group>"; };
 		5B4543A8238CF8FF00FA6B47 /* ZZSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZZSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B4543AB238CF8FF00FA6B47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B4543AD238CF8FF00FA6B47 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				5B4543AB238CF8FF00FA6B47 /* AppDelegate.swift */,
 				5B4543AD238CF8FF00FA6B47 /* SceneDelegate.swift */,
+				5B1D5F6A23923F2D0020A728 /* ZZTabBar.swift */,
 				5B4543AF238CF8FF00FA6B47 /* ContentView.swift */,
 				5B9ED61E238F64720097342C /* Home.swift */,
 				5B9ED620238FB9BA0097342C /* HomeList.swift */,
@@ -288,6 +291,7 @@
 				5B4543AC238CF8FF00FA6B47 /* AppDelegate.swift in Sources */,
 				5B9ED60123910FA300055610 /* UpdateStore.swift in Sources */,
 				5B9ED5FD2390ED4700055610 /* UpdateList.swift in Sources */,
+				5B1D5F6B23923F2D0020A728 /* ZZTabBar.swift in Sources */,
 				5B9ED621238FB9BA0097342C /* HomeList.swift in Sources */,
 				5B9ED5FF2390F59B00055610 /* UpdateDetail.swift in Sources */,
 				5B4543AE238CF8FF00FA6B47 /* SceneDelegate.swift in Sources */,
