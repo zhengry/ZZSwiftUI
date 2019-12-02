@@ -53,10 +53,15 @@ struct UpdateList: View {
                 }
 
             }
-            .navigationBarTitle(Text("Update List").font(.title).fontWeight(.bold))
-            .navigationBarItems(leading: Button(action: addUpdateItem) {
-                Image(systemName: "plus.circle")
-            }, trailing: EditButton())
+            .navigationBarTitle(
+                Text("Update List"),displayMode: .inline
+            )
+            .navigationBarItems(
+                leading: Button(action: addUpdateItem) {
+                    Image(systemName: "plus.circle")
+                },
+                trailing: EditButton()
+            )
             
         }
         

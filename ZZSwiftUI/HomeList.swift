@@ -43,8 +43,9 @@ struct HomeList: View {
                             }
                         }
                     }
-                    .padding([.leading,.bottom,.trailing],40)
+                    .padding(.horizontal,40)
                 }
+                Spacer()
                 
             }
                 .padding(.top,80)

@@ -12,22 +12,16 @@ struct ZZTabBar: View {
     var body: some View {
         TabView {
             Home().tabItem {
-                VStack{
-                    Image(systemName: "house")
-                    Text("首页")
-                }
+                Image(systemName: "house")
+                Text("首页")
             }
             UpdateList().tabItem {
-                VStack{
-                    Image(systemName: "list.dash")
-                    Text("列表")
-                }
+               Image(systemName: "list.dash")
+                Text("列表")
             }
             ContentView().tabItem {
-                VStack {
-                    Image(systemName: "pencil.and.outline")
-                    Text("内容")
-                }
+                Image(systemName: "pencil.and.outline")
+                Text("内容")
             }
         }
     }
